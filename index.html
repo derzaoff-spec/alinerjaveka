@@ -6,632 +6,406 @@
 <title>AliNerjaveka — Nerjaveka Reshotkalar</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Bebas+Neue&display=swap');
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --steel: #1C2B3A;
-    --steel-mid: #2E4057;
-    --accent: #4A90D9;
-    --accent-dark: #2C6FAC;
-    --tg: #0088CC;
-    --silver: #8EA8BF;
-    --light: #F0F4F8;
-    --white: #FFFFFF;
-    --text: #1C2B3A;
-    --muted: #5A7A94;
-    --border: rgba(30,50,70,0.12);
-    --card-bg: #FFFFFF;
-    --radius: 12px;
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --steel:#1C2B3A;--steel-mid:#2E4057;--accent:#4A90D9;--tg:#0088CC;
+    --silver:#8EA8BF;--light:#F0F4F8;--white:#FFFFFF;--text:#1C2B3A;
+    --muted:#5A7A94;--border:rgba(30,50,70,0.12);--radius:12px;
   }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    color: var(--text);
-    background: var(--light);
-    line-height: 1.6;
-  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;font-size:15px;color:var(--text);background:var(--light);line-height:1.6}
 
   /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--steel);
-    padding: 0 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
-    box-shadow: 0 1px 12px rgba(0,0,0,0.18);
-  }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 0.06em;
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .nav-logo svg { width: 22px; height: 22px; fill: var(--accent); }
-  .nav-contacts { display: flex; gap: 16px; align-items: center; }
-  .nav-phone {
-    color: var(--accent);
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    letter-spacing: 0.01em;
-  }
-  .nav-phone:hover { color: #7eb8ff; }
+  nav{position:sticky;top:0;z-index:100;background:var(--steel);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;box-shadow:0 1px 12px rgba(0,0,0,0.18)}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:#fff;display:flex;align-items:center;gap:8px}
+  .logo svg{width:20px;height:20px;fill:var(--accent)}
+  .nav-phones{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+  .nav-phone{color:var(--accent);font-size:12px;font-weight:500;text-decoration:none}
+  .nav-phone:hover{color:#7eb8ff}
 
   /* HERO */
-  .hero {
-    background: var(--steel);
-    padding: 72px 32px 60px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 380px; height: 380px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(74,144,217,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(74,144,217,0.15);
-    border: 1px solid rgba(74,144,217,0.3);
-    color: #7eb8ff;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 24px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .hero-eyebrow span { color: #4A90D9; }
-  .hero h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 8vw, 64px);
-    line-height: 1.05;
-    color: var(--white);
-    letter-spacing: 0.03em;
-    margin-bottom: 16px;
-  }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
-  .hero-sub {
-    color: var(--silver);
-    font-size: 15px;
-    max-width: 460px;
-    margin: 0 auto 36px;
-    line-height: 1.7;
-  }
-  .hero-btns {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 13px 24px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    border: none;
-    transition: opacity 0.15s, transform 0.1s;
-  }
-  .btn:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn:active { transform: scale(0.98); }
-  .btn-primary { background: var(--accent); color: var(--white); }
-  .btn-tg { background: var(--tg); color: var(--white); }
-  .btn svg { width: 17px; height: 17px; fill: currentColor; flex-shrink: 0; }
+  .hero{background:var(--steel);padding:72px 32px 60px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,217,0.12) 0%,transparent 70%);pointer-events:none}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(74,144,217,0.15);border:1px solid rgba(74,144,217,0.3);color:#7eb8ff;font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:24px;letter-spacing:.04em;text-transform:uppercase}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,8vw,64px);line-height:1.05;color:#fff;letter-spacing:.03em;margin-bottom:16px}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero-sub{color:var(--silver);font-size:15px;max-width:460px;margin:0 auto 36px;line-height:1.7}
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;border:none;transition:opacity .15s,transform .1s}
+  .btn:hover{opacity:.88;transform:translateY(-1px)}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-tg{background:var(--tg);color:#fff}
+  .btn svg{width:17px;height:17px;fill:currentColor;flex-shrink:0}
 
-  /* STATS STRIP */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background: var(--steel-mid);
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-  .stat {
-    padding: 22px 16px;
-    text-align: center;
-    border-right: 1px solid rgba(255,255,255,0.07);
-  }
-  .stat:last-child { border-right: none; }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    letter-spacing: 0.04em;
-    color: var(--accent);
-  }
-  .stat-label { font-size: 12px; color: var(--silver); margin-top: 2px; }
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--steel-mid);border-top:1px solid rgba(255,255,255,0.06)}
+  .stat{padding:22px 16px;text-align:center;border-right:1px solid rgba(255,255,255,0.07)}
+  .stat:last-child{border-right:none}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.04em;color:var(--accent)}
+  .stat-label{font-size:12px;color:var(--silver);margin-top:2px}
 
-  /* SECTIONS */
-  .section {
-    padding: 56px 32px;
-    max-width: 880px;
-    margin: 0 auto;
-  }
-  .section-eyebrow {
-    font-size: 11px;
-    color: var(--accent);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .section-title {
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 8px;
-  }
-  .section-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 28px;
-    max-width: 520px;
-  }
+  /* SECTION */
+  .sec{padding:56px 32px;max-width:900px;margin:0 auto}
+  .eyebrow{font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .sec-title{font-size:24px;font-weight:600;color:var(--text);margin-bottom:6px}
+  .sec-desc{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6}
+  .sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+  .sec-header-left .eyebrow{margin-bottom:4px}
+  .sec-header-left .sec-title{margin-bottom:0}
 
-  /* WORKS GRID */
-  .works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-  }
-  .work-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .work-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(28,43,58,0.1);
-  }
-  .work-img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    display: block;
-    background: #dce8f0;
-  }
-  .work-img-placeholder {
-    width: 100%;
-    height: 160px;
-    background: linear-gradient(135deg, #dce8f0 0%, #c8daea 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-  .work-img-placeholder svg { width: 32px; height: 32px; fill: none; stroke: var(--silver); stroke-width: 1.5; }
-  .work-info { padding: 12px 14px; }
-  .work-title { font-size: 13px; font-weight: 600; color: var(--text); }
-  .work-loc { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  /* SLIDER */
+  .slider-wrap{position:relative}
+  .slider-viewport{overflow:hidden;border-radius:var(--radius)}
+  .slider-track{display:flex;gap:16px;transition:transform .4s cubic-bezier(.4,0,.2,1);will-change:transform}
+  .slide{flex:0 0 calc(33.333% - 11px);min-width:0}
+  .slide-img{width:100%;height:220px;object-fit:cover;border-radius:var(--radius);display:block;background:#dce8f0}
+  .slide-placeholder{width:100%;height:220px;background:linear-gradient(135deg,#dce8f0,#c8daea);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:12px}
+  .slide-placeholder svg{width:28px;height:28px;stroke:var(--silver);fill:none}
+  .slide-label{margin-top:10px;font-size:13px;font-weight:500;color:var(--text)}
+  .slide-loc{font-size:12px;color:var(--muted);margin-top:2px}
+
+  /* SLIDER ARROWS */
+  .slider-arrow{position:absolute;top:calc(220px/2 - 20px);width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:background .15s,opacity .15s}
+  .slider-arrow:hover{background:var(--accent)}
+  .slider-arrow:hover svg{stroke:#fff}
+  .slider-arrow svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:2}
+  .slider-arrow.prev{left:-20px}
+  .slider-arrow.next{right:-20px}
+  .slider-arrow.disabled{opacity:.3;cursor:default;pointer-events:none}
+
+  /* DOTS */
+  .slider-dots{display:flex;gap:6px;justify-content:center;margin-top:16px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s}
+  .dot.active{background:var(--accent);transform:scale(1.3)}
+
+  /* SEE ALL BTN */
+  .see-all-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:500;background:transparent;border:1px solid var(--accent);color:var(--accent);cursor:pointer;transition:background .15s,color .15s}
+  .see-all-btn:hover{background:var(--accent);color:#fff}
+  .see-all-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
+
+  /* GALLERY MODAL */
+  .gallery-overlay{display:none;position:fixed;inset:0;background:rgba(10,20,35,0.95);z-index:1000;overflow-y:auto;padding:24px}
+  .gallery-overlay.open{display:block}
+  .gallery-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;max-width:1100px;margin-left:auto;margin-right:auto}
+  .gallery-header h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;color:#fff}
+  .gallery-close{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .gallery-close svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;max-width:1100px;margin:0 auto}
+  .gallery-item{border-radius:10px;overflow:hidden;background:#1C2B3A}
+  .gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
+  .gallery-item-ph{width:100%;height:180px;background:linear-gradient(135deg,#2E4057,#1C2B3A);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--silver);font-size:12px}
+  .gallery-item-ph svg{width:28px;height:28px;stroke:var(--silver);fill:none}
+  .gallery-item-info{padding:10px 12px}
+  .gallery-item-title{font-size:13px;font-weight:500;color:#fff}
+  .gallery-item-loc{font-size:11px;color:var(--silver);margin-top:2px}
 
   /* PRICES */
-  .prices-bg { background: var(--white); }
-  .price-intro {
-    background: var(--steel);
-    border-radius: var(--radius);
-    padding: 28px 28px 22px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .price-intro::after {
-    content: '';
-    position: absolute;
-    bottom: -30px; right: -30px;
-    width: 140px; height: 140px;
-    border-radius: 50%;
-    background: rgba(74,144,217,0.1);
-    pointer-events: none;
-  }
-  .price-intro-row {
-    display: flex;
-    align-items: flex-end;
-    gap: 16px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-  }
-  .price-big-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    line-height: 1;
-  }
-  .price-big-num em {
-    font-style: normal;
-    color: var(--accent);
-  }
-  .price-big-label {
-    font-size: 13px;
-    color: var(--silver);
-    line-height: 1.5;
-    padding-bottom: 6px;
-  }
-  .price-big-label strong { color: var(--white); display: block; font-size: 14px; font-weight: 500; }
-  .price-note {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 14px;
-    font-size: 13px;
-    color: var(--silver);
-    line-height: 1.6;
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  .price-note svg { width: 16px; height: 16px; fill: #f59e0b; flex-shrink: 0; margin-top: 2px; }
-
-  .fason-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 12px;
-  }
-  .fason-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px;
-    transition: box-shadow 0.15s;
-  }
-  .fason-card:hover { box-shadow: 0 4px 16px rgba(28,43,58,0.08); }
-  .fason-card.featured {
-    border: 2px solid var(--accent);
-  }
-  .fason-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  .fason-icon {
-    width: 36px; height: 36px;
-    background: var(--light);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .fason-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--accent); stroke-width: 1.8; }
-  .badge {
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 20px;
-    letter-spacing: 0.04em;
-  }
-  .badge-blue { background: #dbeafe; color: #1d4ed8; }
-  .badge-gold { background: #fef3c7; color: #92400e; }
-  .fason-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-  .fason-desc { font-size: 12px; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
-  .fason-price { font-size: 16px; font-weight: 600; color: var(--text); }
-  .fason-price span { font-size: 12px; color: var(--muted); font-weight: 400; }
-  .fason-features { list-style: none; margin-top: 10px; border-top: 1px solid var(--border); padding-top: 10px; }
-  .fason-features li {
-    font-size: 12px;
-    color: var(--muted);
-    padding: 3px 0;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .fason-features li svg { width: 13px; height: 13px; fill: none; stroke: #22c55e; stroke-width: 2.5; flex-shrink: 0; }
+  .price-bg{background:#fff}
+  .price-intro{background:var(--steel);border-radius:var(--radius);padding:28px;margin-bottom:20px;position:relative;overflow:hidden}
+  .price-intro::after{content:'';position:absolute;bottom:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:rgba(74,144,217,0.1);pointer-events:none}
+  .price-row{display:flex;align-items:flex-end;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+  .price-big{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:.02em;color:#fff;line-height:1}
+  .price-big em{font-style:normal;color:var(--accent)}
+  .price-lbl{font-size:13px;color:var(--silver);line-height:1.5;padding-bottom:6px}
+  .price-lbl strong{color:#fff;display:block;font-size:14px;font-weight:500}
+  .price-note{border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;font-size:13px;color:var(--silver);line-height:1.6;display:flex;gap:8px;align-items:flex-start}
+  .price-note svg{width:16px;height:16px;fill:#f59e0b;flex-shrink:0;margin-top:2px}
+  .fason-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .fcard{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;transition:box-shadow .15s}
+  .fcard:hover{box-shadow:0 4px 16px rgba(28,43,58,0.08)}
+  .fcard.feat{border:2px solid var(--accent)}
+  .ftop{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .ficon{width:36px;height:36px;background:var(--light);border-radius:8px;display:flex;align-items:center;justify-content:center}
+  .ficon svg{width:18px;height:18px;fill:none;stroke:var(--accent);stroke-width:1.8}
+  .badge{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.04em}
+  .badge-bl{background:#dbeafe;color:#1d4ed8}
+  .badge-go{background:#fef3c7;color:#92400e}
+  .fname{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px}
+  .fdesc{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+  .fprice{font-size:16px;font-weight:600;color:var(--text)}
+  .fprice span{font-size:12px;color:var(--muted);font-weight:400}
+  .flist{list-style:none;margin-top:10px;border-top:1px solid var(--border);padding-top:10px}
+  .flist li{font-size:12px;color:var(--muted);padding:3px 0;display:flex;align-items:center;gap:6px}
+  .flist li svg{width:13px;height:13px;fill:none;stroke:#22c55e;stroke-width:2.5;flex-shrink:0}
 
   /* CONTACT */
-  .contact-section {
-    background: var(--steel);
-    padding: 48px 32px;
-    text-align: center;
-  }
-  .contact-section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px;
-    letter-spacing: 0.04em;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
-  .contact-section p { color: var(--silver); font-size: 14px; margin-bottom: 28px; }
-  .contact-btns {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+  .contact{background:var(--steel);padding:48px 32px;text-align:center}
+  .contact h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.04em;color:#fff;margin-bottom:8px}
+  .contact p{color:var(--silver);font-size:14px;margin-bottom:28px}
+  .contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-  /* FOOTER */
-  footer {
-    background: #111d28;
-    padding: 20px 32px;
-    text-align: center;
-    font-size: 12px;
-    color: #4a6070;
-  }
+  footer{background:#111d28;padding:20px 32px;text-align:center;font-size:12px;color:#4a6070}
 
-  /* RESPONSIVE */
-  @media (max-width: 600px) {
-    nav { padding: 0 16px; }
-    .hero { padding: 52px 20px 44px; }
-    .section { padding: 40px 20px; }
-    .contact-section { padding: 40px 20px; }
-    .stats { grid-template-columns: repeat(3, 1fr); }
-    .stat { padding: 16px 8px; }
-    .stat-num { font-size: 24px; }
-    .nav-contacts { flex-direction: column; gap: 2px; align-items: flex-end; }
-    .nav-phone { font-size: 11px; }
+  @media(max-width:700px){
+    nav{padding:0 16px}
+    .hero{padding:48px 20px 40px}
+    .sec{padding:36px 16px}
+    .slide{flex:0 0 calc(50% - 8px)}
+    .slider-arrow.prev{left:-12px}
+    .slider-arrow.next{right:-12px}
+    .contact{padding:36px 16px}
+    .price-big{font-size:36px}
+  }
+  @media(max-width:480px){
+    .slide{flex:0 0 85%}
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22" fill="#1C2B3A"/></svg>
+  <div class="logo">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
     AliNerjaveka
   </div>
-  <div class="nav-contacts">
+  <div class="nav-phones">
     <a class="nav-phone" href="tel:+998558077007">+998 55 807 7007</a>
     <a class="nav-phone" href="tel:+998916790091">+998 91 679 0091</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow"><span>✦</span> Toshkent bo'ylab 200+ muvaffaqiyatli loyiha</div>
+  <div class="hero-eyebrow">✦ Toshkent bo'ylab 200+ muvaffaqiyatli loyiha</div>
   <h1>Zinangizni<br><em>xavfsiz</em> va chiroyli<br>qiling</h1>
   <p class="hero-sub">Nerjaveka reshotkalar — 10 yil kafolat, professional o'rnatish, arzon narx. Bir marta qilib, abadiy unutasiz.</p>
   <div class="hero-btns">
     <a class="btn btn-primary" href="tel:+998558077007">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.32a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.32a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       Bepul hisob-kitob
     </a>
     <a class="btn btn-tg" href="https://t.me/alinerjaveyka_N1" target="_blank">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.967l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.978.592z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.967l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.978.592z"/></svg>
       Telegramda yozing
     </a>
   </div>
 </section>
 
-<!-- STATS -->
 <div class="stats">
-  <div class="stat">
-    <div class="stat-num">200+</div>
-    <div class="stat-label">Bajarilgan ish</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">10 yil</div>
-    <div class="stat-label">Kafolat</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">1 kun</div>
-    <div class="stat-label">O'rnatish muddati</div>
-  </div>
+  <div class="stat"><div class="stat-num">200+</div><div class="stat-label">Bajarilgan ish</div></div>
+  <div class="stat"><div class="stat-num">10 yil</div><div class="stat-label">Kafolat</div></div>
+  <div class="stat"><div class="stat-num">1 kun</div><div class="stat-label">O'rnatish muddati</div></div>
 </div>
 
-<!-- WORKS -->
-<div style="background: var(--light);">
-  <div class="section">
-    <div class="section-eyebrow">Ishlarimiz</div>
-    <div class="section-title">Mijozlarimiz uchun qilgan ishlar</div>
-    <div class="section-desc">Har bir reshtaka individual o'lchamda, sifatli nerjaveka materialdan tayyorlanadi va professional o'rnatiladi.</div>
-    <div class="works-grid">
-      <!-- RASM 1: rasm faylini saqlang va src="rasm1.jpg" deb o'zgartiring -->
-      <div class="work-card">
-        <div class="work-img-placeholder">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Rasm shu yerga
-        </div>
-        <div class="work-info">
-          <div class="work-title">3 qavatli zina reshtaka</div>
-          <div class="work-loc">Yunusobod tumani</div>
-        </div>
+<!-- ISHLAR SLIDER -->
+<div style="background:var(--light)">
+  <div class="sec">
+    <div class="sec-header">
+      <div class="sec-header-left">
+        <div class="eyebrow">Ishlarimiz</div>
+        <div class="sec-title">Mijozlarimiz uchun qilgan ishlar</div>
       </div>
-      <!-- RASM 2 -->
-      <div class="work-card">
-        <div class="work-img-placeholder">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Rasm shu yerga
-        </div>
-        <div class="work-info">
-          <div class="work-title">Zamonaviy dizayn</div>
-          <div class="work-loc">Chilonzor tumani</div>
-        </div>
-      </div>
-      <!-- RASM 3 -->
-      <div class="work-card">
-        <div class="work-img-placeholder">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Rasm shu yerga
-        </div>
-        <div class="work-info">
-          <div class="work-title">Klassik reshtaka</div>
-          <div class="work-loc">Mirzo Ulug'bek tumani</div>
-        </div>
-      </div>
-      <!-- RASM 4 -->
-      <div class="work-card">
-        <div class="work-img-placeholder">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Rasm shu yerga
-        </div>
-        <div class="work-info">
-          <div class="work-title">Premium naqshli reshtaka</div>
-          <div class="work-loc">Shayxontohur tumani</div>
-        </div>
-      </div>
-      <!-- RASM 5 -->
-      <div class="work-card">
-        <div class="work-img-placeholder">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Rasm shu yerga
-        </div>
-        <div class="work-info">
-          <div class="work-title">Yumaloq trubali reshtaka</div>
-          <div class="work-loc">Uchtepa tumani</div>
-        </div>
-      </div>
-      <!-- RASM 6 -->
-      <div class="work-card">
-        <div class="work-img-placeholder">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Rasm shu yerga
-        </div>
-        <div class="work-info">
-          <div class="work-title">Maxsus buyurtma loyiha</div>
-          <div class="work-loc">Yakkasaroy tumani</div>
-        </div>
-      </div>
+      <button class="see-all-btn" onclick="openGallery()">
+        Barchasini ko'rish
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
+
+    <div class="slider-wrap">
+      <button class="slider-arrow prev" id="prevBtn" onclick="slide(-1)">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="slider-viewport">
+        <div class="slider-track" id="sliderTrack">
+          <!-- 
+            RASM QO'SHISH: 
+            <div class="slide">
+              <img class="slide-img" src="images/rasm1.jpg" alt="Reshtaka">
+              <div class="slide-label">Ish nomi</div>
+              <div class="slide-loc">Tuman nomi</div>
+            </div>
+          -->
+          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">3 qavatli zina reshtaka</div><div class="slide-loc">Yunusobod</div></div>
+          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Zamonaviy dizayn</div><div class="slide-loc">Chilonzor</div></div>
+          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Klassik reshtaka</div><div class="slide-loc">Mirzo Ulug'bek</div></div>
+          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Premium naqshli</div><div class="slide-loc">Shayxontohur</div></div>
+          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Yumaloq trubali</div><div class="slide-loc">Uchtepa</div></div>
+          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Maxsus buyurtma</div><div class="slide-loc">Yakkasaroy</div></div>
+          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Naqshli reshtaka</div><div class="slide-loc">Bektemir</div></div>
+          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Ikki qavatli zina</div><div class="slide-loc">Sergeli</div></div>
+        </div>
+      </div>
+      <button class="slider-arrow next" id="nextBtn" onclick="slide(1)">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="slider-dots" id="sliderDots"></div>
   </div>
 </div>
 
-<!-- PRICES -->
-<div class="prices-bg">
-  <div class="section">
-    <div class="section-eyebrow">Narxlar</div>
-    <div class="section-title">Narx qanday aniqlanadi?</div>
-    <div class="section-desc">Hamma narsa ochiq — yashirin to'lov yo'q, bepul o'lchashga boramiz.</div>
+<!-- GALLERY OVERLAY -->
+<div class="gallery-overlay" id="galleryOverlay">
+  <div class="gallery-header">
+    <h2>Barcha ishlarimiz</h2>
+    <button class="gallery-close" onclick="closeGallery()">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</div>
 
+<!-- NARXLAR -->
+<div class="price-bg">
+  <div class="sec">
+    <div class="eyebrow">Narxlar</div>
+    <div class="sec-title" style="margin-bottom:6px">Narx qanday aniqlanadi?</div>
+    <div class="sec-desc">Hamma narsa ochiq — yashirin to'lov yo'q, bepul o'lchashga boramiz.</div>
     <div class="price-intro">
-      <div class="price-intro-row">
-        <div class="price-big-num"><em>280 000</em> so'm</div>
-        <div class="price-big-label">
-          <strong>— 1 metrdan boshlanadi</strong>
-          O'rnatish va material bilan birga
-        </div>
+      <div class="price-row">
+        <div class="price-big"><em>280 000</em> so'm</div>
+        <div class="price-lbl"><strong>— 1 metrdan boshlanadi</strong>O'rnatish va material bilan birga</div>
       </div>
       <div class="price-note">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         Yakuniy narx fason turiga, uzunligiga va murakkabligiga qarab hisoblanadi. Bepul o'lchashga borib, aniq narxni aytamiz — hech qanday yashirin to'lov yo'q.
       </div>
     </div>
-
     <div class="fason-grid">
-      <!-- Klassik -->
-      <div class="fason-card featured">
-        <div class="fason-top">
-          <div class="fason-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
-          </div>
-          <span class="badge badge-blue">Eng mashhur</span>
-        </div>
-        <div class="fason-name">Klassik</div>
-        <div class="fason-desc">To'g'ri chiziqli, sodda va mustahkam dizayn. Har qanday interyerga mos, tez o'rnatiladi.</div>
-        <div class="fason-price">280 000 so'm <span>/ metr</span></div>
-        <ul class="fason-features">
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> Nerjaveka material</li>
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> 10 yil kafolat</li>
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> 1–2 kun o'rnatish</li>
-        </ul>
+      <div class="fcard feat">
+        <div class="ftop"><div class="ficon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg></div><span class="badge badge-bl">Eng mashhur</span></div>
+        <div class="fname">Klassik</div>
+        <div class="fdesc">To'g'ri chiziqli, sodda va mustahkam dizayn. Har qanday interyerga mos.</div>
+        <div class="fprice">280 000 so'm <span>/ metr</span></div>
+        <ul class="flist"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Nerjaveka material</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>10 yil kafolat</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>1–2 kun o'rnatish</li></ul>
       </div>
-
-      <!-- Naqshli -->
-      <div class="fason-card">
-        <div class="fason-top">
-          <div class="fason-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <span class="badge badge-gold">Premium</span>
-        </div>
-        <div class="fason-name">Naqshli</div>
-        <div class="fason-desc">Chiroyli naqsh va qo'shimcha bezaklar bilan. Ko'rinishga e'tibor beruvchilar uchun.</div>
-        <div class="fason-price">Narx so'rang <span>/ metr</span></div>
-        <ul class="fason-features">
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> Individual dizayn</li>
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> 10 yil kafolat</li>
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> Bepul o'lchash</li>
-        </ul>
+      <div class="fcard">
+        <div class="ftop"><div class="ficon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span class="badge badge-go">Premium</span></div>
+        <div class="fname">Naqshli</div>
+        <div class="fdesc">Chiroyli naqsh va bezaklar bilan. Ko'rinishga e'tibor beruvchilar uchun.</div>
+        <div class="fprice">Narx so'rang <span>/ metr</span></div>
+        <ul class="flist"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Individual dizayn</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>10 yil kafolat</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bepul o'lchash</li></ul>
       </div>
-
-      <!-- Yumaloq -->
-      <div class="fason-card">
-        <div class="fason-top">
-          <div class="fason-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
-          </div>
-        </div>
-        <div class="fason-name">Yumaloq</div>
-        <div class="fason-desc">Zamonaviy yumaloq trubalar bilan. Minimalist va elegant ko'rinish.</div>
-        <div class="fason-price">Narx so'rang <span>/ metr</span></div>
-        <ul class="fason-features">
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> Zamonaviy stil</li>
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> 10 yil kafolat</li>
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> Bepul o'lchash</li>
-        </ul>
+      <div class="fcard">
+        <div class="ftop"><div class="ficon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div></div>
+        <div class="fname">Yumaloq</div>
+        <div class="fdesc">Zamonaviy yumaloq trubalar. Minimalist va elegant ko'rinish.</div>
+        <div class="fprice">Narx so'rang <span>/ metr</span></div>
+        <ul class="flist"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Zamonaviy stil</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>10 yil kafolat</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bepul o'lchash</li></ul>
       </div>
-
-      <!-- Maxsus -->
-      <div class="fason-card">
-        <div class="fason-top">
-          <div class="fason-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-          </div>
-        </div>
-        <div class="fason-name">Maxsus buyurtma</div>
-        <div class="fason-desc">O'zingiz istagan dizayn — eskizdan tayyor mahsulotgacha biz bilan birga.</div>
-        <div class="fason-price">Kelishiladi</div>
-        <ul class="fason-features">
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> To'liq individual</li>
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> Bepul maslahat</li>
-          <li><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg> Kafolat bilan</li>
-        </ul>
+      <div class="fcard">
+        <div class="ftop"><div class="ficon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div></div>
+        <div class="fname">Maxsus buyurtma</div>
+        <div class="fdesc">O'zingiz istagan dizayn — eskizdan tayyor mahsulotgacha.</div>
+        <div class="fprice">Kelishiladi</div>
+        <ul class="flist"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>To'liq individual</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bepul maslahat</li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Kafolat bilan</li></ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CONTACT -->
-<div class="contact-section">
+<div class="contact">
   <h2>Bepul o'lchashga chaqiring</h2>
   <p>Bugun qo'ng'iroq qiling — ertaga o'lchashga boramiz, aniq narx aytamiz</p>
   <div class="contact-btns">
-    <a class="btn btn-primary" href="tel:+998558077007">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.32a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      +998 55 807 7007
-    </a>
-    <a class="btn btn-primary" href="tel:+998916790091">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.32a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      +998 91 679 0091
-    </a>
-    <a class="btn btn-tg" href="https://t.me/alinerjaveyka_N1" target="_blank">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.967l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.978.592z"/></svg>
-      Telegramda yozing
-    </a>
+    <a class="btn btn-primary" href="tel:+998558077007">📞 +998 55 807 7007</a>
+    <a class="btn btn-primary" href="tel:+998916790091">📞 +998 91 679 0091</a>
+    <a class="btn btn-tg" href="https://t.me/alinerjaveyka_N1" target="_blank">✈ Telegramda yozing</a>
   </div>
 </div>
 
-<footer>
-  © 2024 AliNerjaveka — Barcha huquqlar himoyalangan
-</footer>
+<footer>© 2024 AliNerjaveka — Barcha huquqlar himoyalangan</footer>
 
+<script>
+// ============ SLIDER ============
+const track = document.getElementById('sliderTrack');
+const slides = track.querySelectorAll('.slide');
+const dotsContainer = document.getElementById('sliderDots');
+let current = 0;
+let perView = getPerView();
+
+function getPerView(){
+  return window.innerWidth <= 480 ? 1 : window.innerWidth <= 700 ? 2 : 3;
+}
+
+const maxIndex = () => Math.max(0, slides.length - perView);
+
+function buildDots(){
+  dotsContainer.innerHTML = '';
+  const total = maxIndex() + 1;
+  for(let i = 0; i < total; i++){
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === current ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsContainer.appendChild(d);
+  }
+}
+
+function updateArrows(){
+  document.getElementById('prevBtn').classList.toggle('disabled', current === 0);
+  document.getElementById('nextBtn').classList.toggle('disabled', current >= maxIndex());
+}
+
+function goTo(idx){
+  current = Math.max(0, Math.min(idx, maxIndex()));
+  const slideW = slides[0].offsetWidth + 16;
+  track.style.transform = `translateX(-${current * slideW}px)`;
+  dotsContainer.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === current));
+  updateArrows();
+}
+
+function slide(dir){ goTo(current + dir); }
+
+window.addEventListener('resize', () => {
+  perView = getPerView();
+  current = Math.min(current, maxIndex());
+  buildDots();
+  goTo(current);
+});
+
+buildDots();
+updateArrows();
+
+// Touch swipe
+let touchX = 0;
+track.addEventListener('touchstart', e => touchX = e.touches[0].clientX, {passive:true});
+track.addEventListener('touchend', e => {
+  const diff = touchX - e.changedTouches[0].clientX;
+  if(Math.abs(diff) > 40) slide(diff > 0 ? 1 : -1);
+}, {passive:true});
+
+// ============ GALLERY ============
+// Rasmlar ro'yxati — yangi rasm qo'shganda shu yerga qo'shing:
+const IMAGES = [
+  {src:'images/rasm1.jpg', title:'3 qavatli zina reshtaka', loc:'Yunusobod'},
+  {src:'images/rasm2.jpg', title:'Zamonaviy dizayn', loc:'Chilonzor'},
+  {src:'images/rasm3.jpg', title:'Klassik reshtaka', loc:"Mirzo Ulug'bek"},
+  {src:'images/rasm4.jpg', title:'Premium naqshli', loc:'Shayxontohur'},
+  {src:'images/rasm5.jpg', title:'Yumaloq trubali', loc:'Uchtepa'},
+  {src:'images/rasm6.jpg', title:'Maxsus buyurtma', loc:'Yakkasaroy'},
+  {src:'images/rasm7.jpg', title:'Naqshli reshtaka', loc:'Bektemir'},
+  {src:'images/rasm8.jpg', title:'Ikki qavatli zina', loc:'Sergeli'},
+];
+
+function buildGallery(){
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = '';
+  IMAGES.forEach(img => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    item.innerHTML = `
+      <img src="${img.src}" alt="${img.title}" onerror="this.parentNode.innerHTML='<div class=gallery-item-ph><svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><circle cx=\"8.5\" cy=\"8.5\" r=\"1.5\"/><polyline points=\"21 15 16 10 5 21\"/></svg>${img.title}</div><div class=gallery-item-info><div class=gallery-item-title>${img.title}</div><div class=gallery-item-loc>${img.loc}</div></div>'">
+      <div class="gallery-item-info">
+        <div class="gallery-item-title">${img.title}</div>
+        <div class="gallery-item-loc">${img.loc}</div>
+      </div>`;
+    grid.appendChild(item);
+  });
+}
+
+function openGallery(){
+  buildGallery();
+  document.getElementById('galleryOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGallery(){
+  document.getElementById('galleryOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('galleryOverlay').addEventListener('click', function(e){
+  if(e.target === this) closeGallery();
+});
+</script>
 </body>
 </html>
