@@ -9,13 +9,12 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
     --steel:#1C2B3A;--steel-mid:#2E4057;--accent:#4A90D9;--tg:#0088CC;
-    --silver:#8EA8BF;--light:#F0F4F8;--white:#FFFFFF;--text:#1C2B3A;
+    --silver:#8EA8BF;--light:#F0F4F8;--white:#fff;--text:#1C2B3A;
     --muted:#5A7A94;--border:rgba(30,50,70,0.12);--radius:12px;
   }
   html{scroll-behavior:smooth}
   body{font-family:'Inter',sans-serif;font-size:15px;color:var(--text);background:var(--light);line-height:1.6}
 
-  /* NAV */
   nav{position:sticky;top:0;z-index:100;background:var(--steel);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:60px;box-shadow:0 1px 12px rgba(0,0,0,0.18)}
   .logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:#fff;display:flex;align-items:center;gap:8px}
   .logo svg{width:20px;height:20px;fill:var(--accent)}
@@ -23,7 +22,6 @@
   .nav-phone{color:var(--accent);font-size:12px;font-weight:500;text-decoration:none}
   .nav-phone:hover{color:#7eb8ff}
 
-  /* HERO */
   .hero{background:var(--steel);padding:72px 32px 60px;text-align:center;position:relative;overflow:hidden}
   .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,217,0.12) 0%,transparent 70%);pointer-events:none}
   .hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(74,144,217,0.15);border:1px solid rgba(74,144,217,0.3);color:#7eb8ff;font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:24px;letter-spacing:.04em;text-transform:uppercase}
@@ -38,67 +36,47 @@
   .btn-tg{background:var(--tg);color:#fff}
   .btn svg{width:17px;height:17px;fill:currentColor;flex-shrink:0}
 
-  /* STATS */
   .stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--steel-mid);border-top:1px solid rgba(255,255,255,0.06)}
   .stat{padding:22px 16px;text-align:center;border-right:1px solid rgba(255,255,255,0.07)}
   .stat:last-child{border-right:none}
   .stat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:.04em;color:var(--accent)}
   .stat-label{font-size:12px;color:var(--silver);margin-top:2px}
 
-  /* SECTION */
-  .sec{padding:56px 32px;max-width:900px;margin:0 auto}
+  .sec{padding:56px 32px;max-width:960px;margin:0 auto}
   .eyebrow{font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
-  .sec-title{font-size:24px;font-weight:600;color:var(--text);margin-bottom:6px}
-  .sec-desc{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6}
-  .sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
-  .sec-header-left .eyebrow{margin-bottom:4px}
-  .sec-header-left .sec-title{margin-bottom:0}
+  .sec-title{font-size:24px;font-weight:600;color:var(--text);margin-bottom:20px}
 
-  /* SLIDER */
-  .slider-wrap{position:relative}
-  .slider-viewport{overflow:hidden;border-radius:var(--radius)}
-  .slider-track{display:flex;gap:16px;transition:transform .4s cubic-bezier(.4,0,.2,1);will-change:transform}
-  .slide{flex:0 0 calc(33.333% - 11px);min-width:0}
-  .slide-img{width:100%;height:220px;object-fit:cover;border-radius:var(--radius);display:block;background:#dce8f0}
-  .slide-placeholder{width:100%;height:220px;background:linear-gradient(135deg,#dce8f0,#c8daea);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:12px}
-  .slide-placeholder svg{width:28px;height:28px;stroke:var(--silver);fill:none}
-  .slide-label{margin-top:10px;font-size:13px;font-weight:500;color:var(--text)}
-  .slide-loc{font-size:12px;color:var(--muted);margin-top:2px}
+  /* TABS */
+  .tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:28px}
+  .tab-btn{padding:10px 28px;font-size:14px;font-weight:500;color:var(--muted);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s,border-color .15s}
+  .tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+  .tab-btn:hover{color:var(--text)}
 
-  /* SLIDER ARROWS */
-  .slider-arrow{position:absolute;top:calc(220px/2 - 20px);width:40px;height:40px;border-radius:50%;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:background .15s,opacity .15s}
-  .slider-arrow:hover{background:var(--accent)}
-  .slider-arrow:hover svg{stroke:#fff}
-  .slider-arrow svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:2}
-  .slider-arrow.prev{left:-20px}
-  .slider-arrow.next{right:-20px}
-  .slider-arrow.disabled{opacity:.3;cursor:default;pointer-events:none}
+  /* GALLERY GRID */
+  .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+  .photo-card{background:#fff;border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;transition:transform .15s,box-shadow .15s;cursor:pointer}
+  .photo-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(28,43,58,0.1)}
+  .photo-card img{width:100%;height:200px;object-fit:cover;display:block}
+  .photo-placeholder{width:100%;height:200px;background:linear-gradient(135deg,#dce8f0,#c8daea);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:12px}
+  .photo-placeholder svg{width:28px;height:28px;stroke:var(--silver);fill:none}
+  .photo-name{padding:10px 14px;font-size:13px;font-weight:500;color:var(--text)}
 
-  /* DOTS */
-  .slider-dots{display:flex;gap:6px;justify-content:center;margin-top:16px}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s}
-  .dot.active{background:var(--accent);transform:scale(1.3)}
+  /* LOADING */
+  .loading{text-align:center;padding:48px;color:var(--muted);font-size:14px}
+  .loading-dots::after{content:'...';animation:dots 1.2s infinite}
+  @keyframes dots{0%,20%{content:'.'}40%,60%{content:'..'}80%,100%{content:'...'}}
 
-  /* SEE ALL BTN */
-  .see-all-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:500;background:transparent;border:1px solid var(--accent);color:var(--accent);cursor:pointer;transition:background .15s,color .15s}
-  .see-all-btn:hover{background:var(--accent);color:#fff}
-  .see-all-btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
-
-  /* GALLERY MODAL */
-  .gallery-overlay{display:none;position:fixed;inset:0;background:rgba(10,20,35,0.95);z-index:1000;overflow-y:auto;padding:24px}
-  .gallery-overlay.open{display:block}
-  .gallery-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;max-width:1100px;margin-left:auto;margin-right:auto}
-  .gallery-header h2{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.04em;color:#fff}
-  .gallery-close{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
-  .gallery-close svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
-  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;max-width:1100px;margin:0 auto}
-  .gallery-item{border-radius:10px;overflow:hidden;background:#1C2B3A}
-  .gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
-  .gallery-item-ph{width:100%;height:180px;background:linear-gradient(135deg,#2E4057,#1C2B3A);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--silver);font-size:12px}
-  .gallery-item-ph svg{width:28px;height:28px;stroke:var(--silver);fill:none}
-  .gallery-item-info{padding:10px 12px}
-  .gallery-item-title{font-size:13px;font-weight:500;color:#fff}
-  .gallery-item-loc{font-size:11px;color:var(--silver);margin-top:2px}
+  /* LIGHTBOX */
+  .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:8px}
+  .lb-close{position:absolute;top:20px;right:24px;background:rgba(255,255,255,0.1);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .lb-close svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2}
+  .lb-name{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;font-weight:500;background:rgba(0,0,0,0.5);padding:6px 16px;border-radius:20px;white-space:nowrap}
+  .lb-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .lb-arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+  .lb-prev{left:16px}
+  .lb-next{right:16px}
 
   /* PRICES */
   .price-bg{background:#fff}
@@ -118,7 +96,7 @@
   .ftop{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
   .ficon{width:36px;height:36px;background:var(--light);border-radius:8px;display:flex;align-items:center;justify-content:center}
   .ficon svg{width:18px;height:18px;fill:none;stroke:var(--accent);stroke-width:1.8}
-  .badge{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;letter-spacing:.04em}
+  .badge{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px}
   .badge-bl{background:#dbeafe;color:#1d4ed8}
   .badge-go{background:#fef3c7;color:#92400e}
   .fname{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px}
@@ -129,26 +107,23 @@
   .flist li{font-size:12px;color:var(--muted);padding:3px 0;display:flex;align-items:center;gap:6px}
   .flist li svg{width:13px;height:13px;fill:none;stroke:#22c55e;stroke-width:2.5;flex-shrink:0}
 
-  /* CONTACT */
   .contact{background:var(--steel);padding:48px 32px;text-align:center}
   .contact h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.04em;color:#fff;margin-bottom:8px}
   .contact p{color:var(--silver);font-size:14px;margin-bottom:28px}
   .contact-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
   footer{background:#111d28;padding:20px 32px;text-align:center;font-size:12px;color:#4a6070}
 
   @media(max-width:700px){
     nav{padding:0 16px}
     .hero{padding:48px 20px 40px}
     .sec{padding:36px 16px}
-    .slide{flex:0 0 calc(50% - 8px)}
-    .slider-arrow.prev{left:-12px}
-    .slider-arrow.next{right:-12px}
     .contact{padding:36px 16px}
     .price-big{font-size:36px}
+    .tab-btn{padding:10px 16px;font-size:13px}
+    .photo-grid{grid-template-columns:repeat(2,1fr)}
   }
-  @media(max-width:480px){
-    .slide{flex:0 0 85%}
+  @media(max-width:400px){
+    .photo-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -187,69 +162,35 @@
   <div class="stat"><div class="stat-num">1 kun</div><div class="stat-label">O'rnatish muddati</div></div>
 </div>
 
-<!-- ISHLAR SLIDER -->
+<!-- ISHLAR -->
 <div style="background:var(--light)">
   <div class="sec">
-    <div class="sec-header">
-      <div class="sec-header-left">
-        <div class="eyebrow">Ishlarimiz</div>
-        <div class="sec-title">Mijozlarimiz uchun qilgan ishlar</div>
-      </div>
-      <button class="see-all-btn" onclick="openGallery()">
-        Barchasini ko'rish
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
+    <div class="eyebrow">Ishlarimiz</div>
+    <div class="sec-title">Bajarilgan ishlar</div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="loadTab('standart',this)">Standart</button>
+      <button class="tab-btn" onclick="loadTab('premium',this)">Premium</button>
     </div>
-
-    <div class="slider-wrap">
-      <button class="slider-arrow prev" id="prevBtn" onclick="slide(-1)">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="slider-viewport">
-        <div class="slider-track" id="sliderTrack">
-          <!-- 
-            RASM QO'SHISH: 
-            <div class="slide">
-              <img class="slide-img" src="images/rasm1.jpg" alt="Reshtaka">
-              <div class="slide-label">Ish nomi</div>
-              <div class="slide-loc">Tuman nomi</div>
-            </div>
-          -->
-          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">3 qavatli zina reshtaka</div><div class="slide-loc">Yunusobod</div></div>
-          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Zamonaviy dizayn</div><div class="slide-loc">Chilonzor</div></div>
-          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Klassik reshtaka</div><div class="slide-loc">Mirzo Ulug'bek</div></div>
-          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Premium naqshli</div><div class="slide-loc">Shayxontohur</div></div>
-          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Yumaloq trubali</div><div class="slide-loc">Uchtepa</div></div>
-          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Maxsus buyurtma</div><div class="slide-loc">Yakkasaroy</div></div>
-          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Naqshli reshtaka</div><div class="slide-loc">Bektemir</div></div>
-          <div class="slide"><div class="slide-placeholder"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Rasm</div><div class="slide-label">Ikki qavatli zina</div><div class="slide-loc">Sergeli</div></div>
-        </div>
-      </div>
-      <button class="slider-arrow next" id="nextBtn" onclick="slide(1)">
-        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
+    <div class="photo-grid" id="photoGrid">
+      <div class="loading"><span class="loading-dots">Yuklanmoqda</span></div>
     </div>
-    <div class="slider-dots" id="sliderDots"></div>
   </div>
 </div>
 
-<!-- GALLERY OVERLAY -->
-<div class="gallery-overlay" id="galleryOverlay">
-  <div class="gallery-header">
-    <h2>Barcha ishlarimiz</h2>
-    <button class="gallery-close" onclick="closeGallery()">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <div class="gallery-grid" id="galleryGrid"></div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <button class="lb-close" onclick="closeLightbox()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <button class="lb-arrow lb-prev" onclick="lbNav(-1);event.stopPropagation()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-arrow lb-next" onclick="lbNav(1);event.stopPropagation()"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+  <div class="lb-name" id="lbName"></div>
 </div>
 
 <!-- NARXLAR -->
 <div class="price-bg">
   <div class="sec">
     <div class="eyebrow">Narxlar</div>
-    <div class="sec-title" style="margin-bottom:6px">Narx qanday aniqlanadi?</div>
-    <div class="sec-desc">Hamma narsa ochiq — yashirin to'lov yo'q, bepul o'lchashga boramiz.</div>
+    <div class="sec-title">Narx qanday aniqlanadi?</div>
     <div class="price-intro">
       <div class="price-row">
         <div class="price-big"><em>280 000</em> so'm</div>
@@ -306,106 +247,73 @@
 <footer>© 2024 AliNerjaveka — Barcha huquqlar himoyalangan</footer>
 
 <script>
-// ============ SLIDER ============
-const track = document.getElementById('sliderTrack');
-const slides = track.querySelectorAll('.slide');
-const dotsContainer = document.getElementById('sliderDots');
-let current = 0;
-let perView = getPerView();
+let currentImages = [];
+let lbIndex = 0;
 
-function getPerView(){
-  return window.innerWidth <= 480 ? 1 : window.innerWidth <= 700 ? 2 : 3;
-}
-
-const maxIndex = () => Math.max(0, slides.length - perView);
-
-function buildDots(){
-  dotsContainer.innerHTML = '';
-  const total = maxIndex() + 1;
-  for(let i = 0; i < total; i++){
-    const d = document.createElement('button');
-    d.className = 'dot' + (i === current ? ' active' : '');
-    d.onclick = () => goTo(i);
-    dotsContainer.appendChild(d);
+async function loadTab(category, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const grid = document.getElementById('photoGrid');
+  grid.innerHTML = '<div class="loading"><span class="loading-dots">Yuklanmoqda</span></div>';
+  try {
+    const res = await fetch(`images/${category}/list.json`);
+    if (!res.ok) throw new Error('topilmadi');
+    const items = await res.json();
+    currentImages = items.map(item => ({
+      src: `images/${category}/${item.file}`,
+      nom: item.nom
+    }));
+    if (currentImages.length === 0) {
+      grid.innerHTML = '<div class="loading">Hozircha rasm yo\'q</div>';
+      return;
+    }
+    grid.innerHTML = '';
+    currentImages.forEach((img, i) => {
+      const card = document.createElement('div');
+      card.className = 'photo-card';
+      card.onclick = () => openLightbox(i);
+      card.innerHTML = `
+        <img src="${img.src}" alt="${img.nom}" loading="lazy"
+          onerror="this.outerHTML='<div class=photo-placeholder><svg viewBox=\\"0 0 24 24\\"><rect x=\\"3\\" y=\\"3\\" width=\\"18\\" height=\\"18\\" rx=\\"2\\"/><circle cx=\\"8.5\\" cy=\\"8.5\\" r=\\"1.5\\"/><polyline points=\\"21 15 16 10 5 21\\"/></svg>${img.nom}</div>'">
+        <div class="photo-name">${img.nom}</div>`;
+      grid.appendChild(card);
+    });
+  } catch(e) {
+    grid.innerHTML = '<div class="loading">Rasmlar yuklanmadi — list.json fayli yo\'q</div>';
   }
 }
 
-function updateArrows(){
-  document.getElementById('prevBtn').classList.toggle('disabled', current === 0);
-  document.getElementById('nextBtn').classList.toggle('disabled', current >= maxIndex());
-}
-
-function goTo(idx){
-  current = Math.max(0, Math.min(idx, maxIndex()));
-  const slideW = slides[0].offsetWidth + 16;
-  track.style.transform = `translateX(-${current * slideW}px)`;
-  dotsContainer.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === current));
-  updateArrows();
-}
-
-function slide(dir){ goTo(current + dir); }
-
-window.addEventListener('resize', () => {
-  perView = getPerView();
-  current = Math.min(current, maxIndex());
-  buildDots();
-  goTo(current);
-});
-
-buildDots();
-updateArrows();
-
-// Touch swipe
-let touchX = 0;
-track.addEventListener('touchstart', e => touchX = e.touches[0].clientX, {passive:true});
-track.addEventListener('touchend', e => {
-  const diff = touchX - e.changedTouches[0].clientX;
-  if(Math.abs(diff) > 40) slide(diff > 0 ? 1 : -1);
-}, {passive:true});
-
-// ============ GALLERY ============
-// Rasmlar ro'yxati — yangi rasm qo'shganda shu yerga qo'shing:
-const IMAGES = [
-  {src:'images/rasm1.jpg', title:'3 qavatli zina reshtaka', loc:'Yunusobod'},
-  {src:'images/rasm2.jpg', title:'Zamonaviy dizayn', loc:'Chilonzor'},
-  {src:'images/rasm3.jpg', title:'Klassik reshtaka', loc:"Mirzo Ulug'bek"},
-  {src:'images/rasm4.jpg', title:'Premium naqshli', loc:'Shayxontohur'},
-  {src:'images/rasm5.jpg', title:'Yumaloq trubali', loc:'Uchtepa'},
-  {src:'images/rasm6.jpg', title:'Maxsus buyurtma', loc:'Yakkasaroy'},
-  {src:'images/rasm7.jpg', title:'Naqshli reshtaka', loc:'Bektemir'},
-  {src:'images/rasm8.jpg', title:'Ikki qavatli zina', loc:'Sergeli'},
-];
-
-function buildGallery(){
-  const grid = document.getElementById('galleryGrid');
-  grid.innerHTML = '';
-  IMAGES.forEach(img => {
-    const item = document.createElement('div');
-    item.className = 'gallery-item';
-    item.innerHTML = `
-      <img src="${img.src}" alt="${img.title}" onerror="this.parentNode.innerHTML='<div class=gallery-item-ph><svg viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><circle cx=\"8.5\" cy=\"8.5\" r=\"1.5\"/><polyline points=\"21 15 16 10 5 21\"/></svg>${img.title}</div><div class=gallery-item-info><div class=gallery-item-title>${img.title}</div><div class=gallery-item-loc>${img.loc}</div></div>'">
-      <div class="gallery-item-info">
-        <div class="gallery-item-title">${img.title}</div>
-        <div class="gallery-item-loc">${img.loc}</div>
-      </div>`;
-    grid.appendChild(item);
-  });
-}
-
-function openGallery(){
-  buildGallery();
-  document.getElementById('galleryOverlay').classList.add('open');
+function openLightbox(i) {
+  lbIndex = i;
+  document.getElementById('lbImg').src = currentImages[i].src;
+  document.getElementById('lbName').textContent = currentImages[i].nom;
+  document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
-function closeGallery(){
-  document.getElementById('galleryOverlay').classList.remove('open');
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-document.getElementById('galleryOverlay').addEventListener('click', function(e){
-  if(e.target === this) closeGallery();
+function closeLB(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function lbNav(dir) {
+  lbIndex = (lbIndex + dir + currentImages.length) % currentImages.length;
+  document.getElementById('lbImg').src = currentImages[lbIndex].src;
+  document.getElementById('lbName').textContent = currentImages[lbIndex].nom;
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'Escape') closeLightbox();
 });
+
+loadTab('standart', document.querySelector('.tab-btn'));
 </script>
 </body>
 </html>
